@@ -268,17 +268,18 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ onSelectProduct 
               className="glass-panel rounded-3xl border border-slate-200/90 hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_12px_35px_rgba(0,159,225,0.2)] flex flex-col justify-between overflow-hidden group bg-white/95"
             >
               <div>
-                {/* Image Container: Original 1080x1350 (4:5) Format */}
-                <div className="relative aspect-[1080/1350] w-full overflow-hidden bg-slate-100 border-b border-slate-200">
+                {/* Image Container: Normal Format (aspect-square 1:1) without artificial zoom */}
+                <div className="relative aspect-square w-full overflow-hidden bg-slate-50 border-b border-slate-200">
                   <img
                     src={item.image}
                     alt={`Foto de ${item.name} da iDevices4You`}
                     loading="lazy"
                     decoding="async"
                     onClick={() => setActiveModalItem(item)}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 origin-top cursor-pointer"
-                    width="1080"
-                    height="1350"
+                    style={{ objectPosition: 'center 12%' }}
+                    className="w-full h-full object-cover transition-opacity duration-300 hover:opacity-95 cursor-pointer"
+                    width="640"
+                    height="640"
                   />
 
                   {/* Soft top gradient only for badges readability without darkening the device */}
@@ -303,7 +304,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ onSelectProduct 
                     aria-label={`Ver post de ${item.name} no Instagram`}
                     className="absolute bottom-3 right-3 p-2 rounded-full bg-black/75 hover:bg-black text-white hover:text-cyan-300 backdrop-blur-md border border-white/20 transition-all shadow-md group/ig"
                   >
-                    <Instagram className="w-4 h-4 group-hover/ig:scale-110 transition-transform" />
+                    <Instagram className="w-4 h-4 transition-transform" />
                   </a>
                 </div>
 
@@ -477,9 +478,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ onSelectProduct 
                 <img
                   src={activeModalItem.image}
                   alt={activeModalItem.name}
-                  className="w-16 h-20 aspect-[1080/1350] rounded-xl object-cover object-top border border-slate-200 shrink-0"
-                  width="1080"
-                  height="1350"
+                  style={{ objectPosition: 'center 12%' }}
+                  className="w-16 h-16 aspect-square rounded-xl object-cover border border-slate-200 shrink-0"
+                  width="640"
+                  height="640"
                 />
                 <div>
                   <div className="text-xl font-extrabold text-slate-950 font-mono">
